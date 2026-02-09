@@ -28,7 +28,17 @@ A production-ready Todo List application with ASP.NET Core Web API backend and m
 - **GitHub Actions CI** pipeline
 - **Code Coverage** reporting
 
-🏗️ Architecture
+
+
+### CI/CD Pipeline
+- **GitHub Actions CI Pipeline**
+- **Automated builds on every push/pull request**
+- **Complete test execution (unit + integration)**
+- **Cross-platform testing on Ubuntu runners**
+- **Automatic reporting of test results**
+- **Quality gates preventing merge on test failures**
+
+### Architecture
 ```
 TodoListApp/
 ├── src/
@@ -77,7 +87,7 @@ TodoListApp/
 
 
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 ### Backend
 - **.NET 8.0** - Modern framework
@@ -100,7 +110,7 @@ TodoListApp/
 - **Entity Framework Core InMemory** - Test database
 - **Microsoft.AspNetCore.Mvc.Testing** - Integration testing
 
-## 📦 Dependencies
+##  Dependencies
 
 ### Runtime Dependencies
 - Microsoft.EntityFrameworkCore.SqlServer (8.0.0)
