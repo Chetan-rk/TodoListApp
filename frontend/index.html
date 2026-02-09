@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List Manager</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            padding: 30px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #eaeaea;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 16px;
+        }
+        
+        .api-status {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        
+        .status-connected {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .status-disconnected {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        .todo-form {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #495057;
+        }
+        
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        textarea {
+            height: 80px;
+            resize: vertical;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        .btn-delete {
+            background-color: #e74c3c;
+        }
+        
+        .btn-delete:hover {
+            background-color: #c0392b;
+        }
+        
+        .btn-edit {
+            background-color: #f39c12;
+        }
+        
+        .btn-edit:hover {
+            background-color: #d68910;
+        }
+        
+        .todo-list {
+            margin-top: 30px;
+        }
+        
+        .todo-item {
+            background: white;
+            border: 1px solid #eaeaea;
+            border-radius: 6px;
+            padding: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        
+        .todo-content {
+            flex: 1;
+        }
+        
+        .todo-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #2c3e50;
+        }
+        
+        .todo-description {
+            color: #7f8c8d;
+            margin-bottom: 10px;
+        }
+        
+        .todo-meta {
+            font-size: 12px;
+            color: #95a5a6;
+            display: flex;
+            gap: 15px;
+        }
+        
+        .todo-status {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .status-pending {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        
+        .status-completed {
+            background-color: #d1ecf1;
+            color: #0c5460;
+        }
+        
+        .todo-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #7f8c8d;
+        }
+        
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+        
+        .no-todos {
+            text-align: center;
+            padding: 40px;
+            color: #95a5a6;
+            font-style: italic;
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: 4px;
+            color: white;
+            font-weight: 600;
+            z-index: 1000;
+            animation: slideIn 0.3s ease;
+        }
+        
+        .notification.success {
+            background-color: #28a745;
+        }
+        
+        .notification.error {
+            background-color: #dc3545;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eaeaea;
+            color: #95a5a6;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📝 Todo List Manager</h1>
+            <p class="subtitle">A simple CRUD application with .NET 8 backend</p>
+            <div id="apiStatus" class="api-status status-disconnected">
+                ⚡ API: Disconnected
+            </div>
+        </header>
+        
+        <main>
+            <!-- Todo Form -->
+            <div class="todo-form">
+                <h2 id="formTitle">➕ Add New Todo</h2>
+                <form id="todoForm">
+                    <div class="form-group">
+                        <label for="title">Title *</label>
+                        <input type="text" id="title" placeholder="Enter todo title" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea id="description" placeholder="Enter todo description"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="checkbox-group">
+                            <input type="checkbox" id="isCompleted">
+                            <span>Mark as completed</span>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" id="submitBtn">Add Todo</button>
+                    <button type="button" id="cancelBtn" style="display:none; background-color: #6c757d;">Cancel</button>
+                </form>
+            </div>
+            
+            <!-- Todo List -->
+            <div class="todo-list">
+                <h2>📋 Your Todos (<span id="todoCount">0</span>)</h2>
+                <div id="todoContainer">
+                    <div class="loading">Loading todos...</div>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>Built with HTML/JS & .NET 8 | Data stored in memory</p>
+        </footer>
+    </div>
+    
+    <!-- Notification Container -->
+    <div id="notificationContainer"></div>
+    
+    <script src="app.js"></script>
+</body>
+</html>

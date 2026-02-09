@@ -1,0 +1,47 @@
+name: .NET CI
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
+        
+    - name: Restore dependencies
+      run: dotnet restore
+      
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+      
+    - name: Test
+      run: dotnet test --configuration Release --no-build --verbosity normal
+      
+    - name: 🎉 Test Success Summary
+      if: success()
+      run: |
+        echo "=========================================="
+        echo "✅ SUCCESS: All tests passed!"
+        echo "✅ Build completed successfully"
+        echo "✅ Tests executed without failures"
+        echo "=========================================="
+      
+    - name: 🚨 Test Failure Summary
+      if: failure()
+      run: |
+        echo "=========================================="
+        echo "❌ FAILURE: Some tests failed!"
+        echo "❌ Please check the test logs above"
+        echo "❌ Fix the failing tests before merging"
+        echo "=========================================="
+        exit 1  # This ensures the job still shows as failed
