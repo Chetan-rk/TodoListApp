@@ -54,9 +54,11 @@ TodoListApp/
 └── 📄 PROJECT_DOCUMENTATION.md # Detailed documentation
 
 
-<img width="786" height="866" alt="image 1" src="https://github.com/user-attachments/assets/f99ceaf0-23b7-44c6-9c08-d9279668e0be" />
-<img width="775" height="872" alt="image 2" src="https://github.com/user-attachments/assets/f48f74db-e05a-418d-ae8b-ce8675ae76f7" />
-<img width="762" height="737" alt="image 3" src="https://github.com/user-attachments/assets/abad252c-9db5-4561-a25a-ff7ba229cf44" />
+<img width="677" height="813" alt="4" src="https://github.com/user-attachments/assets/77447807-ad08-4f80-9fc1-d73960f1f08c" />
+
+
+<img width="671" height="653" alt="5" src="https://github.com/user-attachments/assets/ace7dc76-d9e2-49ef-b714-5ee693f72b2e" />
+
 
 
 
