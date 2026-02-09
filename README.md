@@ -53,6 +53,24 @@ TodoListApp/
 ├── 📄 .github/workflows/ci.yml # CI pipeline
 └── 📄 PROJECT_DOCUMENTATION.md # Detailed documentation
 
+
+<img width="786" height="866" alt="image 1" src="https://github.com/user-attachments/assets/f99ceaf0-23b7-44c6-9c08-d9279668e0be" />
+<img width="775" height="872" alt="image 2" src="https://github.com/user-attachments/assets/f48f74db-e05a-418d-ae8b-ce8675ae76f7" />
+<img width="762" height="737" alt="image 3" src="https://github.com/user-attachments/assets/abad252c-9db5-4561-a25a-ff7ba229cf44" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## 🛠️ Tech Stack
 
 ### Backend
@@ -89,6 +107,15 @@ TodoListApp/
 - xUnit (2.9.3) - Testing framework
 - FluentAssertions (6.12.1) - Assertion library
 - Moq (4.20.72) - Mocking library
+
+
+
+
+
+
+
+
+
 
 ## 🚀 Getting Started
 
