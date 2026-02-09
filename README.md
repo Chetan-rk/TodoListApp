@@ -28,36 +28,40 @@ A production-ready Todo List application with ASP.NET Core Web API backend and m
 - **GitHub Actions CI** pipeline
 - **Code Coverage** reporting
 
-## 🏗️ Architecture
+🏗️ Architecture
+```
 TodoListApp/
-├── 📁 src/
-│ └── TodoListApp.Api/ # ASP.NET Core Web API
-│ ├── Controllers/ # API endpoints
-│ ├── Models/ # Data models
-│ ├── Services/ # Business logic
-│ ├── Data/ # Database context
-│ └── Program.cs # Startup configuration
+├── src/
+│   └── TodoListApp.Api/
+│       ├── Controllers/
+│       ├── Models/
+│       ├── Services/
+│       ├── Data/
+│       └── Program.cs
 │
-├── 📁 tests/
-│ └── TodoListApp.Tests/ # Test projects
-│ ├── Controllers/ # API tests
-│ ├── Services/ # Service tests
-│ ├── Integration/ # Integration tests
-│ └── Data/ # DB context tests
+├── tests/
+│   └── TodoListApp.Tests/
+│       ├── Controllers/
+│       ├── Services/
+│       ├── Integration/
+│       └── Data/
 │
-├── 📁 frontend/ # Frontend files
-│ ├── index.html # Main HTML
-│ └── app.js # Frontend logic
+├── frontend/
+│   ├── index.html
+│   └── app.js
 │
-├── 📄 TodoListApp.sln # Solution file
-├── 📄 .github/workflows/ci.yml # CI pipeline
-└── 📄 PROJECT_DOCUMENTATION.md # Detailed documentation
+├── TodoListApp.sln
+├── .github/workflows/ci.yml
+└── PROJECT_DOCUMENTATION.md
+```
+
 
 
 <img width="677" height="813" alt="4" src="https://github.com/user-attachments/assets/77447807-ad08-4f80-9fc1-d73960f1f08c" />
 
 
 <img width="671" height="653" alt="5" src="https://github.com/user-attachments/assets/ace7dc76-d9e2-49ef-b714-5ee693f72b2e" />
+<img width="1392" height="737" alt="image" src="https://github.com/user-attachments/assets/74a99faa-d5d6-4a36-8aab-78c82f69447d" />
 
 
 
